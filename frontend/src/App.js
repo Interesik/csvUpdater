@@ -32,20 +32,15 @@ class App extends Component {
       this.componentDidMount();
     }).catch(e => console.log(e));
   }
-
-
-
-  
   render() {
-    
     return (
-      <div className='app'>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Csv Uplader</h1>
-          <input type="file" onChange={(event) => this.setState({ file: event.target.files[0]})}/>
-          <button type="submit">Upload</button>
-        </form>
-        <table>
+      <div class="form-group">
+        <form onSubmit={this.handleSubmit} >
+            <h1>Csv Uplader</h1>
+            <input class="form-control" type="file" onChange={(event) => this.setState({ file: event.target.files[0]})}/>
+            <button class="btn btn-primary" type="submit">Upload</button>
+          </form>
+        <table class="table">
           <tbody>
             <tr>
               <th>name</th>
