@@ -9,13 +9,13 @@ class App extends Component {
     Clients: [],
     file: null
   }
+  componentDidUpdate(){
+    axios.get("http://localhost:8080/")
+      .then(respones => this.setState({Clients: respones.data }))
+  }
   componentDidMount() {
-    fetch("http://localhost:8080/")
-      .then(respones => respones.json())
-      .then(Clients => {
-        console.log(Clients)
-        this.setState({ Clients })
-      })      
+    axios.get("http://localhost:8080/")
+      .then(respones => this.setState({Clients: respones.data }))
   }
   handleSubmit = (event) => {
     event.preventDefault()
@@ -29,12 +29,11 @@ class App extends Component {
     };
     axios.post(url, formData, config).then((response) => {
       console.log(response.data);
-      this.componentDidMount();
     }).catch(e => console.log(e));
   }
-  render() {
+  render(){
     return (
-      <div class="form-group">
+      <div className="form-group">
         <form onSubmit={this.handleSubmit} >
             <h1>Csv Uplader</h1>
             <input class="form-control" type="file" onChange={(event) => this.setState({ file: event.target.files[0]})}/>
