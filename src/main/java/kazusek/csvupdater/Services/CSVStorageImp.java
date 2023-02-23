@@ -2,7 +2,7 @@ package kazusek.csvupdater.Services;
 
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-import kazusek.csvupdater.ClientRepository;
+import kazusek.csvupdater.repositories.ClientRepository;
 import kazusek.csvupdater.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 @Service
-public class FileStorageImp implements FileStorage{
+public class CSVStorageImp implements FileStorage{
     @Autowired
     ClientRepository clientRepository;
 

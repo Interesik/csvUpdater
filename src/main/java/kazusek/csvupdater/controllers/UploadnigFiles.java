@@ -1,25 +1,23 @@
 package kazusek.csvupdater.controllers;
 
-import kazusek.csvupdater.Services.FileStorageImp;
+import kazusek.csvupdater.Services.CSVStorageImp;
 import kazusek.csvupdater.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class UploadnigFiles {
     @Autowired
-    FileStorageImp fileStorageImp;
+    CSVStorageImp CSVStorageImp;
     @PostMapping("/")
     public ResponseEntity<String> uploadFile(@RequestParam(value = "file", required = false) MultipartFile file) {
-        fileStorageImp.save(file);
+        CSVStorageImp.save(file);
         String message;
         try {
             message = "Uploaded the file successfully: " + file.getOriginalFilename();
@@ -31,6 +29,6 @@ public class UploadnigFiles {
     }
     @GetMapping("/")
     public List<Client> getSite() {
-        return fileStorageImp.loadAll();
+        return CSVStorageImp.loadAll();
     }
 }

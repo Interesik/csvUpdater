@@ -1,4 +1,4 @@
-package kazusek.csvupdater;
+package kazusek.csvupdater.repositories;
 
 import kazusek.csvupdater.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
